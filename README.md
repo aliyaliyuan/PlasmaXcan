@@ -1,9 +1,9 @@
 ## Environment Setup
 
 ```
-git clone https://github.com/hakyimlab/scPrediXcan.git
-cd scPrediXcan
-conda env create -f scPrediXcan_env.yml
+git clone https://github.com/aliyaliyuan/PlasmaXcan.git
+cd PlasmaXcan
+conda env create -f env.yml
 conda activate scPrediXcan
 ```
 
