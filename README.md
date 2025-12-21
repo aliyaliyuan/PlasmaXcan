@@ -1,5 +1,4 @@
-## Environment setup
-This code is based on Im Lab's pipeline (Available at https://github.com/hakyimlab/scPrediXcan ).
+## Environment Setup
 
 ```
 git clone https://github.com/hakyimlab/scPrediXcan.git
