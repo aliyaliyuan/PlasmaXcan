@@ -27,4 +27,7 @@ ctPred.py will generate the weights needed to generate the gene expression predi
 ## References
 
 https://github.com/hakyimlab/scPrediXcan
+  ctPred.py is based on Tutorial.ipynb from this repository. Also, the env.yml was sourced from this repository 
+  
 https://github.com/hakyimlab/scPrediXcan/blob/master/Scripts/Enformer_epigenomic_features/Geuvadis_individuals_epigenome.txt
+  Links to the Zenodo databases with the epigenetic features derived from deep learning model Enformer. They come in the form of .h5 files. 
