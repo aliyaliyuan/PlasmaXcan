@@ -1,0 +1,7 @@
+scPrediXcan. generates gene expression predictions for from single-cell eQTL data by integrating epigenomic features from deep learning model Enformer (provides information on the location of every promoter and enhancer). Once
+the raw single-cell eQTL data is pre-processed, ctPred is the first step for scPrediXcan. It generates the weights that will influence the final gene expression predictions. 
+The single-cell eQTL data must be processed into the corret csv format to run with ctPred.py. preprocess.py takes the tsv extracted from the h5 files with the single-cell eQTL data and extracts the gene name, chromosome, and 
+rank-based percentile of the mean expression. The preprocess script also adds the feature predictions for all 5312 features from Enformer into the csv. 
+
+This csv is then ran through ctPred, a neural network that generates the weights for the gene expression predictions. A png scatterplot comparing observed vs predicted expression will also be generated. You want to look for 
+a strong linear trend. 
