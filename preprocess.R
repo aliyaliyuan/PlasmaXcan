@@ -6,7 +6,7 @@ library(dplyr)
 library(Matrix)
 library(reticulate)
 
-## sConvert cRNASeq data to Pseudobulk data
+## Convert cRNASeq data to Pseudobulk data
 # Read in Seurat object
 LD <- readRDS("~/Zenodo/processed_seurat_object/MASLD_snRNA_seq_seurat_v4.rds")
 
