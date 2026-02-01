@@ -27,6 +27,10 @@ ctPred.py will generate the weights needed to generate the gene expression predi
 Below is an example of the scatterplot of the expression comparison of the periportal hepatoctye model I generated: 
 <img width="2074" height="1638" alt="scPred_HG00096_periportal" src="https://github.com/user-attachments/assets/4b3f2f10-41a1-444d-b21a-53514811c1be" />
 
+## l-ctPred
+To convert the .pt models you generated from ctPred, you need to generate a reference csv with the gene names and chromosome locations for each gene. To do this, run the make_biomart_dict.py script. Then, run predict_h5.py to generate the csv file for each .pt model that you will use as input for l-ctPred. 
+
+
 ## References
 
 https://github.com/hakyimlab/scPrediXcan
