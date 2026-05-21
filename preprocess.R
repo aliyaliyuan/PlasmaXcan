@@ -30,16 +30,7 @@ head(LD_filtered)
 table(LD_filtered$Cell_type_detailed)
 
 #Remove non-coding sequences by filtering out genes that are absent in the Enformer-derived epigenomic features file 
-library(rhdf5)
 
-str(h5ls("/home/aliya/Liver/batch1/HG00096.h5"))
-
-myh5 <- h5read("/home/aliya/Liver/batch1/HG00096.h5",
-               name = "chr10_100009946_100009948_predictions")
-
-head(myh5)
-
-dim(myh5) #Should be 5313 4
 
 meta <- read.csv("/home/aliya/Liver/batch1/metadata.csv")
 
