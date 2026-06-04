@@ -10,8 +10,8 @@ from pathlib import Path
 # Setup paths
 # ------------------------
 epi = "/home/aliya/Liver/1111/Gene_epigenomics_v0.csv"
-ibg_dir = "/home/aliya/Liver/batch1/IbG/ctrl/"
-output_dir = "/home/aliya/Liver/ctPred_output/batch1/"
+ibg_dir = "/home/aliya/tooba/sample"
+output_dir = "/home/aliya/tooba/sample_ctPred"
 
 # Create output directory if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)
@@ -29,7 +29,7 @@ skipped_errors = 0
 # ------------------------
 # 1. Load metadata 
 # ------------------------
-meta = pd.read_csv("/home/aliya/Liver/batch1/metadata.csv", dtype=str)
+meta = pd.read_csv("/home/aliya/Liver/metadata.csv", dtype=str)
 meta = meta.dropna(subset=['TSS_enformer_input'])
 meta['chromo'] = meta['TSS_enformer_input'].str.split('_').str[0]
 meta['chromo'] = meta['chromo'].astype(str).str.strip()
