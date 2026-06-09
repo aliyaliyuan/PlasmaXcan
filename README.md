@@ -14,7 +14,7 @@ I started with a Seurat object https://zenodo.org/records/14586466 . I used live
 
 ## Pre-processing Data
 
-**Obtain the following data files: **
+**Obtain the following data files:**
 - metadata.csv from Geuvadis Enformer-dervied epigenetic features: https://zenodo.org/records/15477910
 - Seurat object (.rds)
 
