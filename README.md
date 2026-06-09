@@ -6,19 +6,23 @@ cd PlasmaXcan
 conda env create -f env.yml
 conda activate scPrediXcan
 ```
+You will need to activate the conda env to run any script in this pipeline. Do not forget (but you probably will, so if you get an error, just check if it's because you forgot to activate your conda env). 
 
 ## Data Acquisition 
 
-I started with a Seurat object https://zenodo.org/records/14586466 . I used liver data acquired from single-cell eQTL experiments. The Seurat object I used was dervied from single-cell liver data available on GEO at https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE289173 .
+I started with a Seurat object https://zenodo.org/records/14586466 . I used liver data acquired from single-cell eQTL experiments. The Seurat object I used was dervied from single-cell liver data available on GEO at https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE289173 . For this pipeline, you need a Seurat object (.Rds) format, but .h5ad are also common single-cell data formats (especially if you are using data from the Human Cell Atlas). Conversion script pending. 
 
 ## Pre-processing Data
-After acquiring the Seurat object from your single-cell data and the metadata.csv from Geuvadis Enformer-dervied epigenetic features: https://zenodo.org/records/15477910 ,  it is
-time to pre-process the data. 
 
-Start with preprocess.R to generate the correct tsv file that has the observed gene expression data from the single-cell data you are using. This tsv file is The "IbG_" tsv file produced by this script contains the following columns: gene_name, individual_1, individual_2, individual_3, etc. It is the individual-by-gene matrix that shows the expression value of each gene per individual. 
+**Obtain the following data files: **
+- metadata.csv from Geuvadis Enformer-dervied epigenetic features: https://zenodo.org/records/15477910
+- Seurat object (.rds)
 
-Then, go to the ctPred directory and run preprocess_IbG.py to convert that tsv into the appropriate csv for ctPred. preprocess.py will add the epigenetic feature information from Enformer and will calculate 
-mean expression and add column ("percentile"), which is rank-based percentiles. The output csv will have the following columns: gene_name, chromo, feature_1, ..., feature_5313, mean_expression, percentile. 
+**Run the following scripts in this order**
+- pseudobulk_sample.Rmd (requires editing script to change path files, each part is clearly indicated)
+- make_ctPred_training_file.py (requires editing script to change path files, just 3 lines at beginning)
+
+pseudobulk_sample.Rmd converts the single-cell data into pseudobulk data, which means it generates the gene expression for each gene in each cell population per individual sample in the data you chose. In my analysis, I only used controls so that I could generate models based on healthy cells. make_ctPred_training_file.py generates a ctPred training file (includes gene_name, chromosome, 5313 epigenomic features derived from deep learning model Enformer, mean_expression, and percentile). Percentile ranks the measured expression of each gene relative to the others. The features from Enformer are predicted locations of enhancers and promoters, which helps train the ctPred model by giving it more information to "learn" from. 
 
 ## ctPred
 
